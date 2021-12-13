@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <title>Список студентов</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<h1>Список студентов</h1>
+<a href="/addstudent/"  class="btn btn-primary">Добавить студента</a>
+<br/><br/>
+<div>
+    <table border="1" class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+            <th>Команды</th>
+        </tr>
+        <tr th:each ="student : ${students}">
+            <td th:utext="${student.id}">...</td>
+            <td th:utext="${student.name}">...</td>
+            <td th:utext="${student.age}">...</td>
+            <td><a th:href="@{'/delstudent/' + ${student.id}}"  class="btn btn-primary">Удалить студента</a>
+                <a th:href="@{'/changestudent/' + ${student.id}}"  class="btn btn-primary">Изменить студента</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
